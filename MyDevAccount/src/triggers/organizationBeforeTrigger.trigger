@@ -1,28 +1,32 @@
-trigger organizationBeforeTrigger on Organization__c (before insert, before update) {
-
-	// The records which are going to be created or udpated are availed from "new" property of Trigger class
-	List<Organization__c> orgList = Trigger.new;
+trigger organizationBeforeTrigger on Organization__c (before insert, before update, 
+													after insert, after update) {
+	RestrictingOrgTriggerExecution rote = new RestrictingOrgTriggerExecution();
 	
-	// Custom logic for making the Map<Id, Organization__c> collection
-	Map<id, Organization__c> orgmap = new Map<Id, Organization__c>();
-	
-	
-	for(Organization__c org: orgList){
-		
-		system.debug(''+org.CoLocationId__c); 
-		
-		orgMap.put(org.Id, org);
+	if( !RestrictingOrgTriggerExecution.isAfterOrIsUpdate ){
+		// All the after events
+		if(Trigger.isAfter){
+			
+			if(Trigger.isInsert)
+				system.debug('the after trigger is fired for insert'); // 2nd statement
+			if(Trigger.isUpdate){
+				system.debug(Trigger.size); // returning the number of records for that particular context
+				system.debug('the after trigger is fired for update'); // 4th satement
+				RestrictingOrgTriggerExecution.isAfterUpdate = true;
+			}
+		}	
+		// All the before eventsm
+		if(Trigger.isBefore){
+			if(Trigger.isUpdate){
+				system.debug('the before trigger is fired for update'); // 3rd statement
+				RestrictingOrgTriggerExecution.isBeforeUpdate = true;
+			}
+			if(Trigger.isInsert)
+				system.debug('the before trigger is fired for insert'); // 1st statement
+		}
+			
 	}
 	
-	// END Custom logic for making the Map<Id, Organization__c> collection
-	
-	// From Trigger.newMap property we may avail the same as the custom logic defined above;
-	Map<id, Organization__c> orgTriggerMap = Trigger.newMap;
-	
-	
-	// The records which are going to be created or updated
-	for ( Organization__c org: Trigger.new) {
-		// org.addError('The Trigger is caught with error.');
-		
-	} // END for
+	if( RestrictingOrgTriggerExecution.isAfterUpdate && RestrictingOrgTriggerExecution.isBeforeUpdate ){
+		RestrictingOrgTriggerExecution.isAfterOrIsUpdate = true;
+	}
 }
