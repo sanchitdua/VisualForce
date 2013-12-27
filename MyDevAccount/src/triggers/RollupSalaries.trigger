@@ -73,7 +73,7 @@ trigger RollupSalaries on Employee__c (before update, before insert, before dele
 			Organization__c toUpdate = new Organization__c();
 			toUpdate = org;
 			if(idWithSum.containsKey(org.Id)){
-				org.SalarySum__c = idWithSum.get(toUpdate.Id);
+				toUpdate.SalarySum__c = idWithSum.get(toUpdate.Id);
 				orgToUpdate.add(toUpdate);
 			}
 		}
