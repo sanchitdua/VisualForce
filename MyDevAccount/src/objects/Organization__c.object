@@ -38,6 +38,43 @@
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
     <fields>
+        <fullName>ADLT_Log__c</fullName>
+        <externalId>false</externalId>
+        <label>ADLT Log</label>
+        <referenceTo>ADLT_Log__c</referenceTo>
+        <relationshipLabel>Organization</relationshipLabel>
+        <relationshipName>Organization</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ClassID__c</fullName>
+        <externalId>false</externalId>
+        <label>ClassID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Code</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CoDeptID__c</fullName>
+        <externalId>false</externalId>
+        <label>CoDeptID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CoLocationID__c</fullName>
         <externalId>false</externalId>
         <label>CoLocationID</label>
@@ -46,7 +83,33 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    
+    <fields>
+        <fullName>ID__c</fullName>
+        <externalId>false</externalId>
+        <label>ID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SalarySum__c</fullName>
+        <externalId>false</externalId>
+        <label>SalarySum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>UniqueId__c</fullName>
+        <externalId>true</externalId>
+        <label>UniqueId</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Organization</label>
     <listViews>
         <fullName>All</fullName>
@@ -58,6 +121,26 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Organization</pluralLabel>
+    <recordTypes>
+        <fullName>Classification</fullName>
+        <active>true</active>
+        <label>Classification</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Department</fullName>
+        <active>true</active>
+        <label>Department</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Job_Title</fullName>
+        <active>true</active>
+        <label>Job Title</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Location</fullName>
+        <active>true</active>
+        <label>Location</label>
+    </recordTypes>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>

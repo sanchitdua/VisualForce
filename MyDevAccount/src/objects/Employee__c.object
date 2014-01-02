@@ -33,11 +33,72 @@
         <type>Default</type>
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Employee Object</description>
+    <description>Created by ADLT</description>
     <enableActivities>true</enableActivities>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
+    <fields>
+        <fullName>ADLT_Log__c</fullName>
+        <externalId>false</externalId>
+        <label>ADLT Log</label>
+        <referenceTo>ADLT_Log__c</referenceTo>
+        <relationshipLabel>Employee</relationshipLabel>
+        <relationshipName>Employee</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Birthdate__c</fullName>
+        <externalId>false</externalId>
+        <label>Birthdate</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ClassificationID__c</fullName>
+        <externalId>false</externalId>
+        <label>ClassificationID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Classification__c</fullName>
+        <externalId>false</externalId>
+        <label>Classification</label>
+        <referenceTo>Organization__c</referenceTo>
+        <relationshipLabel>Employee</relationshipLabel>
+        <relationshipName>R00N90000007GcoTEAS</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Client_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Code</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>CompanyLocationID__c</fullName>
         <externalId>false</externalId>
@@ -49,6 +110,143 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DepartmentID__c</fullName>
+        <externalId>false</externalId>
+        <label>DepartmentID</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <referenceTo>Organization__c</referenceTo>
+        <relationshipLabel>Employee</relationshipLabel>
+        <relationshipName>R00N90000007GcpnEAC</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>DivisionID__c</fullName>
+        <externalId>false</externalId>
+        <label>DivisionID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EEOClass__c</fullName>
+        <externalId>false</externalId>
+        <label>EEOClass</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>EligibleRehire__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>EligibleRehire</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>EmailAddress__c</fullName>
+        <externalId>false</externalId>
+        <label>EmailAddress</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EmergNotify__c</fullName>
+        <externalId>false</externalId>
+        <label>EmergNotify</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>FirstName__c</fullName>
+        <externalId>false</externalId>
+        <label>FirstName</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FullTime__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>FullTime</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HireDate__c</fullName>
+        <externalId>false</externalId>
+        <label>HireDate</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HomeAddress1__c</fullName>
+        <externalId>false</externalId>
+        <label>HomeAddress1</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HomeAddress2__c</fullName>
+        <externalId>false</externalId>
+        <label>HomeAddress2</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HomePhone__c</fullName>
+        <externalId>false</externalId>
+        <label>HomePhone</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>JobTitleID__c</fullName>
+        <externalId>false</externalId>
+        <label>JobTitleID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Job_Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Job Title</label>
+        <referenceTo>Organization__c</referenceTo>
+        <relationshipLabel>Employee</relationshipLabel>
+        <relationshipName>R00N90000007GcqCEAS</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Job__c</fullName>
         <externalId>false</externalId>
         <label>Job</label>
@@ -56,6 +254,63 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastName__c</fullName>
+        <externalId>false</externalId>
+        <label>LastName</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastReview__c</fullName>
+        <externalId>false</externalId>
+        <label>LastReview</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <referenceTo>Organization__c</referenceTo>
+        <relationshipLabel>Employee</relationshipLabel>
+        <relationshipName>R00N90000007GcpbEAC</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MiddleName__c</fullName>
+        <externalId>false</externalId>
+        <label>MiddleName</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NextReview__c</fullName>
+        <externalId>false</externalId>
+        <label>NextReview</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>OfficePhone__c</fullName>
+        <externalId>false</externalId>
+        <label>OfficePhone</label>
+        <required>false</required>
+        <type>Phone</type>
     </fields>
     <fields>
         <fullName>OrgId__c</fullName>
@@ -69,6 +324,30 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>PayHistory__c</fullName>
+        <externalId>false</externalId>
+        <label>PayHistory</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>RehireDate__c</fullName>
+        <externalId>false</externalId>
+        <label>RehireDate</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>RehireReason__c</fullName>
+        <externalId>false</externalId>
+        <label>RehireReason</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Salary__c</fullName>
         <externalId>false</externalId>
         <label>Salary</label>
@@ -76,6 +355,83 @@
         <required>false</required>
         <scale>0</scale>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SearchKey__c</fullName>
+        <externalId>false</externalId>
+        <label>SearchKey</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SexMale__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SexMale</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SupervisorID__c</fullName>
+        <externalId>false</externalId>
+        <label>SupervisorID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TerminationDate__c</fullName>
+        <externalId>false</externalId>
+        <label>TerminationDate</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>TerminationReason__c</fullName>
+        <externalId>false</externalId>
+        <label>TerminationReason</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TimeClockID__c</fullName>
+        <externalId>false</externalId>
+        <label>TimeClockID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UniqueId__c</fullName>
+        <externalId>true</externalId>
+        <label>UniqueId</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ZipCode__c</fullName>
+        <externalId>false</externalId>
+        <label>ZipCode</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <label>Employee</label>
     <listViews>
