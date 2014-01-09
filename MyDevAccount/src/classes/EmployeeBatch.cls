@@ -1,4 +1,4 @@
-global class EmployeeBatch implements Database.Batchable<sObject>, Database.Stateful{
+global class EmployeeBatch implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
 	
 	// ▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
     // ▀▄▀▄   initialState is the initial state of the class. 										     ▀▄▀▄
@@ -26,18 +26,28 @@ global class EmployeeBatch implements Database.Batchable<sObject>, Database.Stat
 	
 	
 	// First method 
-	/* global Database.Querylocator start(Database.BatchableContext bc){
+	global Database.Querylocator start(Database.BatchableContext bc){
 		system.debug('start() method invoked.');
-		return Database.getQueryLocator('SELECT id, name, FirstName__c, LastName__c, JobTitleId__c from Employee__c'); // 50 million records
-	}*/
-	
-	global Iterable<sObject> start(Database.BatchableContext bc){
-		return new EmployeeIterable(); 
+		return Database.getQueryLocator('SELECT id, name, city__c, zipcode__c, FirstName__c, LastName__c, JobTitleId__c from Employee__c WHERE zipCode__c <> NULL limit 10'); // 50 million records
 	}
+	
+	/* global Iterable<sObject> start(Database.BatchableContext bc){
+		return new EmployeeIterable(); 
+	}*/
 	// Second method
 	global void execute(Database.BatchableContext bc, List<sObject> scope){ 
 			
-			system.debug('execute() method invoked.');
+        	
+        	List<Employee__c> empList = (List<Employee__c>)scope;
+			List<Employee__c> empToUpdate = new List<Employee__c>();
+			for(Employee__c emp: empList){
+				GeoFutureCallout.callout(emp.ZipCode__c);
+                emp.City__c = GeoFutureCallout.cityName;
+                    
+				empToUpdate.add(emp);
+			}
+        	update empToUpdate;
+			/* system.debug('execute() method invoked.');
 			List<Employee__c> empList = (List<Employee__c>)scope;
 			
 			for(Employee__c emp: empList){
@@ -48,7 +58,7 @@ global class EmployeeBatch implements Database.Batchable<sObject>, Database.Stat
 			update empList;
 			// As far as my understanding the initialState can be used to get the value of the variable at class level 
 			// first time. we can even obtain those inside the final method.
-			system.debug(initialState ? 'Yes' : 'No');
+			system.debug(initialState ? 'Yes' : 'No'); */
 			
 	}
 	
@@ -74,8 +84,8 @@ global class EmployeeBatch implements Database.Batchable<sObject>, Database.Stat
 			system.debug('No employees exists.');
 		}	
 		system.debug('calling the next batch ...');
-		EmployeeBatch2 eb = new EmployeeBatch2(employeeNames);
-		Database.executeBatch(eb);
+		// EmployeeBatch2 eb = new EmployeeBatch2(employeeNames);
+		// Database.executeBatch(eb);
 	}
 	
 }
