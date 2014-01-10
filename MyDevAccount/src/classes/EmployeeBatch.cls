@@ -9,6 +9,8 @@ global class EmployeeBatch implements Database.Batchable<sObject>, Database.Stat
     // ▀▄▀▄   ref: http://www.salesforce.com/us/developer/docs/apexcode/Content/apex_batch_interface.htm ▀▄▀▄
     // ▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
     
+    public static boolean isTest = false;
+    public static boolean isAnotherTest = false;
     // We try to implement the Datatabase.Stateful or not, the initialState is going to be obtained in the finish() method.
 	private final boolean initialState;
 	
@@ -36,17 +38,32 @@ global class EmployeeBatch implements Database.Batchable<sObject>, Database.Stat
 	}*/
 	// Second method
 	global void execute(Database.BatchableContext bc, List<sObject> scope){ 
-			
+        try{
+            if(isAnotherTest){
+            	isAnotherTest = null;
+                String str = String.valueOf(isAnotherTest);
+                str.contains('test');
+            }
+            List<Employee__c> empList = (List<Employee__c>)scope;
+            List<Employee__c> empToUpdate = new List<Employee__c>();
+            for(Employee__c emp: empList){
+                if(!isTest){
+                    GeoFutureCallout.callout(emp.ZipCode__c);
+                    emp.City__c = GeoFutureCallout.cityName;
+                }
+                empToUpdate.add(emp);
+            }
+            try{
+            	update empToUpdate;
+            }catch(DMLException e){
+            	e.getStackTraceString();
+            }
+            
+        }catch(Exception ex){
+            ex.getStackTraceString();
+        }
         	
-        	List<Employee__c> empList = (List<Employee__c>)scope;
-			List<Employee__c> empToUpdate = new List<Employee__c>();
-			for(Employee__c emp: empList){
-				GeoFutureCallout.callout(emp.ZipCode__c);
-                emp.City__c = GeoFutureCallout.cityName;
-                    
-				empToUpdate.add(emp);
-			}
-        	update empToUpdate;
+        	
 			/* system.debug('execute() method invoked.');
 			List<Employee__c> empList = (List<Employee__c>)scope;
 			
