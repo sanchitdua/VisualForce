@@ -1,0 +1,47 @@
+<apex:page title="Hello {!$User.FirstName}" extensions="MySecondController" standardController="Account" recordSetVar="accounts" tabStyle="account" sidebar="false" showHeader="false" >
+    
+    <apex:form >
+        <apex:outputLabel for="searchText"> Search Text</apex:outputLabel>
+        
+        <apex:outputPanel > 
+            <apex:inputText id="searchText" value="{!searchText}"/><br/>
+            <apex:commandButton value="Go!" action="{!doSearch}" reRender="block" status="status" />
+        </apex:outputPanel>
+        
+        <apex:actionStatus id="status" startText="requesting..." >
+        
+        </apex:actionStatus>
+        <apex:outputPanel id="block">
+            <apex:repeat value="{!results}" var="result">
+                <br/>
+                {!result.Name} <br/>
+                {!result.Phone} <br/>
+                {!result.Jigsaw} <br/>
+            </apex:repeat>
+        </apex:outputPanel>
+        
+        
+    </apex:form>
+    
+    <!-- <apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!accounts}" var="a">
+            <apex:column value="{!a.Name}"/>
+        
+        </apex:pageBlockTable>
+    </apex:pageBlock> --> 
+    <!-- Hello {!$User.FirstName}
+    <apex:inputField />
+        <apex:dataList value="{!Account.contacts}" var="contact">
+            <apex:outputText value="{!contact.FirstName}" />
+            <apex:outputText value="{!contact.MailingCity}" />
+            <apex:outputText value="{!contact.Phone}" />
+        </apex:dataList>--> 
+    <!-- </apex:form> -->
+  
+  <!-- Begin Default Content REMOVE THIS -->
+  <!-- this is not the comment. this is just text.
+  <h1>Congratulations</h1><p/>
+  This is your new Page -->
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>
